@@ -1,0 +1,3 @@
+name: ${forecast.seq_len}->${forecast.pred_len}-${model.net_params.name}
+# default_hp_metric: False
+save_dir: ./logs/${data.data_params.name}

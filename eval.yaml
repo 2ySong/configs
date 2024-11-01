@@ -1,0 +1,9 @@
+defaults:
+  - _self_
+  - trainer: gpu0
+  - data: electricity #ETTh
+  - forecast: default
+  - model: mlp/CycleNet
+  - logger: csv
+seed: 2024
+ckpt_path: logs/Electricity/96->96-CycleNet/linear_0.141/checkpoints/epoch=14-step=3000.ckpt

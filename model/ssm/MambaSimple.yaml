@@ -1,0 +1,26 @@
+_target_: exp.ExpA.Exp_Model
+net_params:
+  #必须
+  name: MambaSimple
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  label_len: 48 #非former为0
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  norm_type: no
+  lr: ${forecast.lr}
+  #former
+  output_attention: false
+  # timnet
+  task_name: long_term_forecast
+  e_layers: 2
+  d_layers: 1
+  d_model: 128
+  embed: 2
+  freq: ${data.data_params.freq}
+  c_out: ${data.data_params.enc_in}
+  expand: 4
+  d_inner: 64
+  dropout: 0.1
+  d_conv: 4
+  d_ff: 16

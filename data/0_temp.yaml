@@ -1,0 +1,20 @@
+_target_: data_provider.datamodule.DataModule
+data_params:
+  # 必须
+  name: Electricity
+  loader: custom
+  root_path: ${forecast.data_path}/electricity/
+  data_path: electricity.csv
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  label_len: ${model.net_params.label_len}
+  freq: h
+  target: OT
+  enc_in: 321
+  embed: timeF
+  features: ${forecast.features} # M,MS,S
+  # 单独的
+  period_len: 24 #model->SpareTSF
+  cycle: 168 # model->CycleNet
+
+batch_size: ${forecast.batch_size}

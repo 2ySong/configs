@@ -1,0 +1,14 @@
+_target_: exp.Exp_CycleNet.Exp_Model
+net_params:
+  name: CycleNet
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features}
+  norm_type: seq # seq, batch, layer, no,revin
+  lr: ${forecast.lr}
+
+  #
+  cycle: ${data.data_params.cycle}
+  model_type: mlp #[linear, mlp]
+  d_model: 512

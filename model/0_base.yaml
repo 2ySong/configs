@@ -1,0 +1,29 @@
+_target_: exp.ExpB.Exp_Model
+net_params:
+  #必须
+  name: SparseTSF
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  label_len: 0 # 非former为0
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features}
+  norm_type: revin # batch, layer, no
+  lr: ${forecast.lr}
+
+  # former系列参数
+  output_attention: 0
+  e_layers: 2
+  d_layers: 1
+  factor: 1
+  d_model: 512
+  distil: 0 # 1: use distil or 0: no distil
+  n_heads: 8
+  d_ff: 2048
+  dropout: 0.5
+  activation: gelu
+  embed: ${data.data_params.embed}
+  c_out: ${data.data_params.enc_in}
+  freq: ${data.data_params.freq}
+  dec_in: ${data.data_params.enc_in}
+  moving_avg: 25
+  embed_type: 1

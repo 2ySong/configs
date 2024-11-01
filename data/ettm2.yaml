@@ -1,0 +1,17 @@
+_target_: data_provider.datamodule.DataModule
+data_params:
+  name: ETTm2 # dataset type
+  dataset_name: ETTm2 # dataset loader type
+  root_path: ${forecast.data_path}/ETT-small/ # root path of the data file
+  data_path: ETTm2.csv # data file
+  target: OT # target feature in S or MS task
+  freq: M # freq for time features encoding, options:[s:secondly, t:minutely, h:hourly, d:daily, b:business days, w:weekly, m:monthly]
+  seq_len: ${forecast.seq_len}
+  label_len: ${model.net_params.label_len}  # start token length (fixed)
+  pred_len: ${forecast.pred_len} # prediction sequence length
+  enc_in: 7 #特征数量
+  cycle: 96 # cycle length
+  embed: timeF # embedding dimension for time features
+  features: ${forecast.features} # input features
+
+batch_size: ${forecast.batch_size}

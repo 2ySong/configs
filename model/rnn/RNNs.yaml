@@ -1,0 +1,17 @@
+_target_: exp.ExpB.Exp_Model
+net_params:
+  #可选RNN,LSTM,GRU
+  name: RNNs
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  norm_type: seq
+  lr: ${forecast.lr}
+
+  #
+  input_size: 256
+  hidden_size: 64
+  num_layers: 2
+  rnn_type: RNN #GRU,RNN
+

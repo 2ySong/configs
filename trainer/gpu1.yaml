@@ -1,0 +1,11 @@
+_target_: lightning.pytorch.trainer.Trainer
+accelerator: gpu
+devices: [1]
+max_epochs: 40
+min_epochs: 2
+limit_train_batches: 100
+check_val_every_n_epoch: 1
+# limit_val_batches: 1 # 每轮的验证批次数
+# limit_test_batches: 1 # 每轮的测试批次数
+fast_dev_run: False
+

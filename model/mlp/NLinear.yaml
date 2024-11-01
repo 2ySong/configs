@@ -1,0 +1,14 @@
+_target_: exp.ExpB.Exp_Model
+net_params:
+  #必须
+  name: NLinear
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  norm_type: seq
+  lr: ${forecast.lr}
+  
+  #
+  individual: True #是否通道独立

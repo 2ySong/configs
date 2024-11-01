@@ -1,0 +1,17 @@
+_target_: data_provider.datamodule.DataModule
+data_params:
+  name: Weather # dataset type
+  dataset_name: custom # dataset loader type
+  root_path: /data/songzy/workshop/data/weather/ # root path of the data file
+  data_path: ${data.data_params.name}.csv # data file
+  target: OT # target feature in S or MS task
+  freq: M # freq for time features encoding, options:[s:secondly, t:minutely, h:hourly, d:daily, b:business days, w:weekly, m:monthly]
+  seq_len: ${forecast.seq_len}
+  label_len: ${forecast.label_len} # start token length (fixed)
+  pred_len: ${forecast.pred_len} # prediction sequence length
+  enc_in: 21
+  cycle: 144  # cycle length
+  embed: timeF # embedding dimension for time features
+  features: ${forecast.features} # input features
+
+batch_size: ${forecast.batch_size}

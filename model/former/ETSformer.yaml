@@ -1,0 +1,32 @@
+_target_: exp.ExpA.Exp_Model
+net_params:
+  #必须
+  name: ETSformer
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  label_len: 48 #非former为0
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  norm_type: no
+  lr: ${forecast.lr}
+
+  # former系列参数
+  output_attention: 0
+  distil: 0 # 1: use distil or 0: no distil
+  e_layers: 2
+  d_layers: 2
+  factor: 1
+  d_model: 512
+  n_heads: 8
+  d_ff: 2048
+  dropout: 0.2
+  activation: gelu #
+  embed: ${data.data_params.embed} #time features encoding, options:[timeF, fixed, learned]
+  c_out: ${data.data_params.enc_in}
+  freq: ${data.data_params.freq}
+  dec_in: ${data.data_params.enc_in}
+  moving_avg: 25 #window size of moving average
+  embed_type: 1 #0: default 1: value embedding + temporal embedding + positional embedding 2: value embedding + temporal embedding 3: value embedding + positional embedding 4: value embedding
+  #ets
+  K: 0
+  std: 0.2

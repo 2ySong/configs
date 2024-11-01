@@ -1,0 +1,29 @@
+_target_: exp.ExpA.Exp_Model
+net_params:
+  #必须
+  name: NonStationaryTransformer
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  label_len: 48 #非former为0
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  norm_type: no
+  lr: ${forecast.lr}
+
+  # 
+  task_name: long_term_forecast
+  e_layers: 2
+  d_layers: 1
+  n_heads: 8
+  factor: 3
+  dec_in: ${data.data_params.enc_in}
+  d_ff: 32
+  d_model: 16
+  embed: 32
+  freq: ${data.data_params.freq}
+  c_out: ${data.data_params.enc_in}
+  dropout: 0.1
+  output_attention: False
+  activation: relu
+  p_hidden_dims: [1024, 512]
+  p_hidden_layers: 2

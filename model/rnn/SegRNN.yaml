@@ -1,0 +1,19 @@
+_target_: exp.ExpB.Exp_Model
+net_params:
+  #必须
+  name: SegRNN
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  norm_type: seq
+  lr: ${forecast.lr}
+  
+  # 不常用的参数
+  rnn_type: gru # RNN cell type, options: [LSTM, GRU]
+  dec_way: pmf
+  seg_len: 48
+  channel_id: 1
+  d_model: 128
+  dropout: 0.1
+  revin: ${forecast.use_revin}

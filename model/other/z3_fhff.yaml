@@ -1,0 +1,11 @@
+_target_: model.fhff.lit_module.LitModule
+net_params:
+  name: FHFF
+  enc_in: ${data.data_params.enc_in}
+  pred_len: ${forecast.pred_len}
+  label_len: 0
+  seq_len: ${forecast.seq_len}
+  use_revin: 1  # 1: use revin or 0: no revin
+  lr: 0.005
+  
+

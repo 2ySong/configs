@@ -1,0 +1,11 @@
+_target_: exp.ExpA.Exp_Model
+net_params:
+  #必须
+  name: Transformer
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  label_len: 0 #非former为0
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  norm_type: no
+  lr: ${forecast.lr}

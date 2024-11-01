@@ -1,0 +1,20 @@
+_target_: data_provider.datamodule.DataModule
+data_params:
+  # 必须
+  name: M4
+  dataset_name: custom # dataset loader type
+  root_path: ${forecast.data_path}/electricity/ # root path of the data file
+  data_path: ${data.data_params.name}.csv # data file
+  target: OT # target feature in S or MS task
+  freq: h # freq for time features encoding, options:[s:secondly, t:minutely, h:hourly, d:daily, b:business days, w:weekly, m:monthly]
+  seq_len: ${forecast.seq_len}
+  label_len: ${model.net_params.label_len} # start token length (fixed)
+  pred_len: ${forecast.pred_len} # prediction sequence length
+  enc_in: 321
+  embed: timeF # embedding dimension for time features
+  features: ${forecast.features} # input features
+  #
+  period_len: 24 #model->SpareTSF
+  cycle: 168 # model->CycleNet
+
+batch_size: ${forecast.batch_size}

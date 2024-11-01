@@ -1,0 +1,22 @@
+_target_: exp.ExpB.Exp_Model
+net_params:
+  #需要特别大的内存，natch_size可以小一点，<32
+  name: Crossformer
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  label_len: 48 #非former为0
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  norm_type: no
+  lr: ${forecast.lr}
+
+  # crossformer
+  seg_len: 6 #24
+  win_size: 4
+  factor: 10
+  d_model: 512
+  d_ff: 1024
+  n_heads: 3
+  e_layers: 3
+  dropout: 0.0
+  baseline: false

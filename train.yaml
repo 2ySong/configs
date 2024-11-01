@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+  - trainer: quick
+  - data: electricity #ETTh
+  - forecast: default
+  - model: former/Informer
+  - logger: tb
+seed: 2025
+train: True
+test: True
+early_stop: True

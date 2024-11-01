@@ -1,0 +1,28 @@
+_target_: exp.ExpE1_DiffusionTS.Exp_Model
+net_params:
+  #必须
+  name: DiffusionTS
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  label_len: 0 #非former为0
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  use_revin: ${forecast.use_revin}
+  lr: ${forecast.lr}
+  
+  # dts
+  seq_length: ${forecast.seq_len}
+  feature_size: ${data.data_params.enc_in}
+  n_layer_enc: 3
+  n_layer_dec: 6
+  d_model: 96 
+  timesteps: 500
+  sampling_timesteps: 500
+  loss_type: "l1"
+  beta_schedule: cosine
+  n_heads: 4
+  mlp_hidden_times: 4
+  attn_pd: 0.5
+  resid_pd: 0.5
+  kernel_size: 1
+  padding_size: 0

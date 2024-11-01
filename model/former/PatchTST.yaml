@@ -1,0 +1,41 @@
+_target_: exp.ExpB.Exp_Model
+net_params:
+  #必须
+  name: PatchTST
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  label_len: 48 #非former为0
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  norm_type: no
+  lr: ${forecast.lr}
+  
+  # former
+  embed_type: 0
+  output_attention: 0
+  c_out: ${data.data_params.enc_in}
+  d_model: 128
+  n_heads: 16
+  e_layers: 3
+  d_layers: 2
+  d_ff: 2048
+  moving_avg: 25 #window size of moving average
+  factor: 1
+  # distill: 0
+  dropout: 0.2
+  embed: ${data.data_params.embed} #time features encoding, options:[timeF, fixed, learned]
+  activation: gelu #
+  dec_in: ${data.data_params.enc_in}
+  # PatchTST
+  fc_dropout: 0.2
+  head_dropout: 0
+  patch_len: 16
+  stride: 8
+  padding_patch: 0
+  revin: 1
+  affine: 0
+  subtract_last: 0
+  decomposition: 0
+  kernel_size: 25
+  individual: 0
+  pct_start: 0.2

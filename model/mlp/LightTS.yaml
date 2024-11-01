@@ -1,0 +1,18 @@
+_target_: exp.ExpA.Exp_Model
+net_params:
+  #
+  name: LightTS
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  norm_type: seq
+  lr: ${forecast.lr}
+
+  #
+  task_name: long_term_forecast
+  d_model: 128
+  dropout: 0.1
+  num_class: 1
+  output_attention: false

@@ -1,0 +1,21 @@
+_target_: exp.ExpB.Exp_Model
+net_params:
+  #
+  name: Koopa
+  seq_len: ${forecast.seq_len}
+  pred_len: ${forecast.pred_len}
+  label_len: 48 #非former为0
+  enc_in: ${data.data_params.enc_in}
+  features: ${forecast.features} # input dimension
+  norm_type: seq
+  lr: ${forecast.lr}
+  
+  #
+  mask_spectrum:
+  seg_len: 48
+  num_blocks: 4
+  dynamic_dim: 64
+  hidden_dim: 512
+  hidden_layers: 2
+  multistep:  False
+  c_out: ${data.data_params.enc_in}
